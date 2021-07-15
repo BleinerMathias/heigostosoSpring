@@ -28,6 +28,6 @@ public class HomeController {
 
     @GetMapping("/receita")
     public String receita(){
-        return "/visualisaReceita.html";
+        return "/visualizaReceita.html";
     }
 }
