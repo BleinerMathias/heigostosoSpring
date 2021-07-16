@@ -13,4 +13,7 @@ public interface UserDAO {
     User findById(Integer id);
 
     List<User> findAll();
+
+    User validate(String email, String password);
+
 }

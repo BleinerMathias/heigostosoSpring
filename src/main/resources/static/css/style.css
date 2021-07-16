@@ -129,8 +129,12 @@ nav img {
 login {
     margin-top: 6rem !important;
 }
-.mt-50 {
+.mt-10 {
     margin-top: 20rem;
+}
+
+.mt-10 {
+    margin-top: 10rem;
 }
 
 /* MODAL EXLCUIR receita */
@@ -488,5 +492,12 @@ hr {
     height: 50px;
     line-height: 50px;
     padding: 0;
+}
+
+.main-div-recipe {
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 60%;
 }
 

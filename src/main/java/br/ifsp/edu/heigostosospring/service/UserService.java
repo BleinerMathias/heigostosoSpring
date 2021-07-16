@@ -16,5 +16,7 @@ public interface UserService {
 
     List<User> buscarTodos();
 
+    User validate(String email, String password);
+
 
 }

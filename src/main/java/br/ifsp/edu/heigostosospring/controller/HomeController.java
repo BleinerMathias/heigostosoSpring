@@ -1,5 +1,7 @@
 package br.ifsp.edu.heigostosospring.controller;
 
+import br.ifsp.edu.heigostosospring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,16 +11,6 @@ public class HomeController {
     @GetMapping("/")
     public String home(){
         return "/index";
-    }
-
-    @GetMapping("/registrar")
-    public String register(){
-        return "/registrar.html";
-    }
-
-    @GetMapping("/login")
-    public String login(){
-        return "/login.html";
     }
 
     @GetMapping("/receitas")

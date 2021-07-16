@@ -1,11 +1,15 @@
 package br.ifsp.edu.heigostosospring.domain.dao;
 
+import br.ifsp.edu.heigostosospring.domain.recipe.Ingredients;
+import br.ifsp.edu.heigostosospring.domain.user.User;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class AbstractDAO<T, PK extends Serializable>  {
 
@@ -41,6 +45,13 @@ public abstract class AbstractDAO<T, PK extends Serializable>  {
         return entityManager.find(entityClass,id);
     }
 
+    public List<T> findByRecipe(PK id){
+        return entityManager
+                .createQuery("from "+ entityClass.getSimpleName() + " i where recipe_fk = :id")
+                .setParameter("id", id)
+                .getResultList();
+    }
+
     protected List<T> createQuery(String jpql, Object... params){
         TypedQuery<T> query = entityManager.createQuery(jpql,entityClass);
 
@@ -50,4 +61,5 @@ public abstract class AbstractDAO<T, PK extends Serializable>  {
 
         return query.getResultList();
     }
+
 }

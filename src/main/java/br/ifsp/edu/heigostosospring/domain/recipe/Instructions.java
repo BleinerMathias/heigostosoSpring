@@ -12,7 +12,7 @@ public class Instructions extends AbstractEntity<Integer> {
     private Integer step;
 
     @ManyToOne
-    @JoinColumn(name = "recipe_instruction_fk")
+    @JoinColumn(name = "recipe_fk")
     private Recipe recipe;
 
     @Column(nullable = false)
@@ -32,6 +32,14 @@ public class Instructions extends AbstractEntity<Integer> {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 
 }

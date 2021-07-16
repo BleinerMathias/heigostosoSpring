@@ -3,9 +3,11 @@ package br.ifsp.edu.heigostosospring.service;
 import br.ifsp.edu.heigostosospring.domain.dao.UserDAO;
 import br.ifsp.edu.heigostosospring.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     @Autowired
@@ -41,4 +43,7 @@ public class UserServiceImpl implements UserService{
         return dao.findAll();
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public User validate(String email, String password){return dao.validate(email,password);}
 }

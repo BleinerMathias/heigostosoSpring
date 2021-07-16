@@ -16,6 +16,14 @@ public class Ingredients extends AbstractEntity<Integer> {
     @JoinColumn(name = "recipe_fk")
     private Recipe recipe;
 
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
+
     public String getDescription() {
         return description;
     }

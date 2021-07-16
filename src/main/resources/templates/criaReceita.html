@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+
+    <link href="/css/style.css" rel="stylesheet">
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <title>Heigostoso</title>
+
+</head>
+
+<body class="bg-uva">
+
+
+        <header th:replace="/fragments/header :: header">
+            <div>header</div>
+        </header>
+
+        <div class="container" style="margin-top: 6rem">
+            <div class="login-form">
+                <div class="main-div-recipe">
+                    <h1>Criar Receita</h1>
+                    <div class="card">
+                        <div class="card-title">
+                            Dados da receita
+                        </div>
+                        <div class="card-body">
+                                   <form th:action="@{/receita/salvar}"
+                                         th:object="${recipe}"
+                                         method="POST">
+
+                                        <input id="id" value="" hidden>
+
+                                       <div class="row">
+                                           <div class="col-6">
+                                               <div class="form-group">
+                                                   <label for="name">Titulo da receita</label>
+                                                    <input type="text" class="form-control" id="name"
+                                                        placeholder="Pão de ló" autofocus="autofocus" th:field="*{name}"
+                                                        required>
+                                               </div>
+                                           </div>
+                                           <div class="col-6">
+                                            <div class="form-group">
+                                               <label th:for="category">Categoria</label>
+                                               <select id="category" th:field="*{category}" class="form-control">
+                                                   <option th:each="category : ${T(br.ifsp.edu.heigostosospring.domain.recipe.Category).values()}"
+                                                           th:value="${category}" th:text="${category.getDescription()}"></option>
+                                               </select>
+                                           </div>
+                                           </div>
+                                       </div>
+
+                                       <div class="row">
+                                           <div class="col-6">
+                                               <div class="form-group">
+                                               <label for="portions">Porção</label>
+                                               <input type="number" class="form-control" id="portions"
+                                                     th:field="*{portions}"
+                                                      required>
+                                           </div>
+                                           </div>
+                                           <div class="col-6">
+                                                <div class="form-group">
+                                           <label for="cookingTime">Tempo de preparo (segundos)</label>
+                                           <input type="number" class="form-control" id="cookingTime"
+                                                  th:field="*{cookingTime}"
+                                                  required>
+                                       </div>
+                                           </div>
+                                       </div>
+
+                                       <div class="row">
+                                           <div class="col-12">
+                                                <div class="form-group">
+                                           <label for="image">Url da imagem</label>
+                                           <input type="text" class="form-control" id="image"
+                                                  th:field="*{image}"
+                                                  required>
+                                       </div>
+                                           </div>
+                                       </div>
+                                            <button class="btn btn-orange" type="submit">Criar receita</button>
+
+                                   </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+</body>
+
+</html>

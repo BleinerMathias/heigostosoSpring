@@ -3,10 +3,12 @@ package br.ifsp.edu.heigostosospring.service;
 import br.ifsp.edu.heigostosospring.domain.dao.RecipeDAO;
 import br.ifsp.edu.heigostosospring.domain.recipe.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class RecipeServiceImpl implements RecipeService {
 
     @Autowired

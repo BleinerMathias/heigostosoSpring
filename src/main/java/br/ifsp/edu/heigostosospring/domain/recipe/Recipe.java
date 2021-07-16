@@ -117,4 +117,5 @@ public class Recipe extends AbstractEntity<Integer> {
         this.comments = comments;
     }
 
+
 }
