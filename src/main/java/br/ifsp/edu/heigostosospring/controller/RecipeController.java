@@ -33,12 +33,16 @@ public class RecipeController {
     @Autowired
     private InstructionsService instructionsService;
 
+    @Autowired
+    private UserService userService;
+
     private Recipe recipe;
 
 
-
     @GetMapping("/nova")
-    public String newRecipe(Recipe recipe){
+    public String newRecipe(Recipe recipe, HttpSession session){
+        User user = (User) session.getAttribute("userLogged");
+        recipe.setUser(user);
         return "/criaReceita.html";
     }
 
@@ -67,14 +71,9 @@ public class RecipeController {
     }
 
     @PostMapping("/salvar")
-    public String saveNewRecipe(HttpSession session, Recipe recipe){
-        User userLogged = (User) session.getAttribute("userLogged");
-        if(userLogged !=null)  {
-            recipe.setUser(userLogged);
-            service.salvar(recipe);
-            return "redirect:/receita/minhasReceitas";
-        }
-        return "redirect:/usuario/login";
+    public String saveNewRecipe(Recipe recipe){
+        service.salvar(recipe);
+        return "redirect:/receita/minhasReceitas";
     }
 
     @GetMapping("/minhasReceitas")
@@ -82,6 +81,8 @@ public class RecipeController {
         map.addAttribute("recipes",service.buscarTodos());
         return "/minhasReceitas.html";
     }
+
+
 
 
 }

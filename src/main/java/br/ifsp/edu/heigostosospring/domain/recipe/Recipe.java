@@ -16,7 +16,7 @@ public class Recipe extends AbstractEntity<Integer> {
     @Column(name = "portions", nullable = false)
     private Integer portions;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Integer cookingTime;
 
     @Column(nullable = false)

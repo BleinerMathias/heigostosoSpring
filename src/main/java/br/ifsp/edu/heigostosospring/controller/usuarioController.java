@@ -8,7 +8,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
@@ -39,12 +38,20 @@ public class usuarioController {
     @PostMapping("/efetuaLogin")
     public String makeLogin(User user, HttpSession session)
     {
-        User validate = service.validate(user.getEmail().toString(), user.getPassword().toString());
+        User validate = (User) service.validate(user.getEmail().toString(), user.getPassword().toString());
         if(validate != null){
             session.setAttribute("userLogged", validate);
             return "redirect:/receita/minhasReceitas";
         }
         return "/login.html";
+    }
+
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        if(session.getAttribute("userLogged") != null)
+            session.invalidate();
+        return "/usuario/login";
     }
 
     @GetMapping("/dashboard")

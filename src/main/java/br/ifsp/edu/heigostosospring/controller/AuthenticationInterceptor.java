@@ -14,7 +14,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         String uri = request.getRequestURI();
-        if (uri.contains("login") || uri.contains("efetuaLogin") || uri.endsWith("registrar") || uri.contains("resources") || uri.contains("webjars") || uri.contains("bootstrap")
+        if (uri.contains("login") || uri.endsWith("salvar") || uri.contains("efetuaLogin") || uri.endsWith("registrar") || uri.contains("resources") || uri.contains("webjars") || uri.contains("bootstrap")
                 || uri.contains("poppers") || uri.contains("css") || uri.contains("js") || uri.contains("img")) {
             return true;
         }
