@@ -49,7 +49,7 @@
                                          th:object="${recipe}"
                                          method="POST">
 
-                                        <input id="id" value="" hidden>
+                                       <input type="hidden" id="id_user" th:field="*{user}">
 
                                        <div class="row">
                                            <div class="col-6">

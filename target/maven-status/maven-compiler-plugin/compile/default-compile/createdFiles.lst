@@ -22,6 +22,7 @@ br\ifsp\edu\heigostosospring\domain\dao\UserDAOImp.class
 br\ifsp\edu\heigostosospring\domain\recipe\Recipe.class
 br\ifsp\edu\heigostosospring\domain\dao\UserDAO.class
 br\ifsp\edu\heigostosospring\domain\dao\IngredientsDAO.class
+br\ifsp\edu\heigostosospring\converter\StringToUser.class
 br\ifsp\edu\heigostosospring\domain\dao\InstructionDAO.class
 br\ifsp\edu\heigostosospring\controller\usuarioController.class
 br\ifsp\edu\heigostosospring\domain\user\User.class
