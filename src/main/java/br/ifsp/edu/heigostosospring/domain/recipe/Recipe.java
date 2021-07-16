@@ -101,6 +101,15 @@ public class Recipe extends AbstractEntity<Integer> {
         this.ratingList = ratingList;
     }
 */
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Category getCategory() {
         return category;
     }

@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/receita")
 public class RecipeController {
@@ -65,9 +67,14 @@ public class RecipeController {
     }
 
     @PostMapping("/salvar")
-    public String saveNewRecipe(Recipe recipe){
-        service.salvar(recipe);
-        return "redirect:/receita/minhasReceitas";
+    public String saveNewRecipe(HttpSession session, Recipe recipe){
+        User userLogged = (User) session.getAttribute("userLogged");
+        if(userLogged !=null)  {
+            recipe.setUser(userLogged);
+            service.salvar(recipe);
+            return "redirect:/receita/minhasReceitas";
+        }
+        return "redirect:/usuario/login";
     }
 
     @GetMapping("/minhasReceitas")

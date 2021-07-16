@@ -32,17 +32,17 @@ public class usuarioController {
     }
 
     @GetMapping("/login")
-    public String login(){
-        return "/login.html";
+    public String login(User user){
+        return "/login";
     }
 
-    @GetMapping("/efetuaLogin")
+    @PostMapping("/efetuaLogin")
     public String makeLogin(User user, HttpSession session)
     {
         User validate = service.validate(user.getEmail().toString(), user.getPassword().toString());
         if(validate != null){
-            session.setAttribute("usserLogged", validate);
-            return "redirect:/receitas/minhasReceitas";
+            session.setAttribute("userLogged", validate);
+            return "redirect:/receita/minhasReceitas";
         }
         return "/login.html";
     }
