@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "instructions")
 public class Instructions extends AbstractEntity<Integer> {
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Integer step;
 
     @ManyToOne

@@ -44,4 +44,8 @@ public class RecipeServiceImpl implements RecipeService {
         return dao.findAll();
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public List<Recipe> findByUser(Integer id)  { return  dao.findByUser(id);}
+
 }

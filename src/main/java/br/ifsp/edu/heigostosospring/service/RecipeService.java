@@ -16,4 +16,6 @@ public interface RecipeService {
 
     List<Recipe> buscarTodos();
 
+    List<Recipe> findByUser(Integer id);
+
 }

@@ -52,6 +52,7 @@ public class RecipeController {
         ingredient.setRecipe(service.buscarPorId(id));
         instructions.setRecipe(service.buscarPorId(id));
 
+        model.addAttribute("dataRecipe",recipe);
         model.addAttribute("Ingredients", ingredientService.buscarPorReceita(id));
         model.addAttribute("Instructions", instructionsService.buscarPorReceita(id));
         return "/populaReceita.html";
@@ -77,9 +78,17 @@ public class RecipeController {
     }
 
     @GetMapping("/minhasReceitas")
-    public String listarReceitas(ModelMap map){
-        map.addAttribute("recipes",service.buscarTodos());
+    public String listarReceitas(ModelMap map, HttpSession session){
+        User user = (User) session.getAttribute("userLogged");
+        map.addAttribute("recipes",service.findByUser(user.getId()));
         return "/minhasReceitas.html";
+    }
+
+    @GetMapping("/view/{id}")
+    public String viewRecipe(@PathVariable("id") Integer id, ModelMap map, HttpSession session){
+        User user = (User) session.getAttribute("userLogged");
+        map.addAttribute("recipe",service.buscarPorId(id));
+        return "/visualizaReceita.html";
     }
 
 
