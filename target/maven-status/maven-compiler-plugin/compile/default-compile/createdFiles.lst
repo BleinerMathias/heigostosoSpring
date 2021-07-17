@@ -11,11 +11,14 @@ br\ifsp\edu\heigostosospring\domain\dao\InstructionDAOImpl.class
 br\ifsp\edu\heigostosospring\controller\AuthenticationAppConfig.class
 br\ifsp\edu\heigostosospring\service\RecipeServiceImpl.class
 br\ifsp\edu\heigostosospring\domain\recipe\Ingredients.class
+br\ifsp\edu\heigostosospring\service\CommentService.class
 br\ifsp\edu\heigostosospring\domain\recipe\Comment.class
 br\ifsp\edu\heigostosospring\controller\HomeController.class
 br\ifsp\edu\heigostosospring\domain\recipe\Category.class
 br\ifsp\edu\heigostosospring\service\RecipeService.class
+br\ifsp\edu\heigostosospring\domain\dao\CommentDAO.class
 br\ifsp\edu\heigostosospring\HeigostosoSpringApplication.class
+br\ifsp\edu\heigostosospring\domain\dao\CommentDAOImp.class
 br\ifsp\edu\heigostosospring\controller\AuthenticationInterceptor.class
 br\ifsp\edu\heigostosospring\service\UserServiceImpl.class
 br\ifsp\edu\heigostosospring\domain\dao\UserDAOImp.class
@@ -28,6 +31,8 @@ br\ifsp\edu\heigostosospring\controller\usuarioController.class
 br\ifsp\edu\heigostosospring\domain\user\User.class
 br\ifsp\edu\heigostosospring\controller\RecipeController.class
 br\ifsp\edu\heigostosospring\converter\StringToRecipe.class
+br\ifsp\edu\heigostosospring\service\CommentServiceImpl.class
 br\ifsp\edu\heigostosospring\domain\dao\AbstractDAO.class
+br\ifsp\edu\heigostosospring\controller\commentController.class
 br\ifsp\edu\heigostosospring\domain\recipe\Rating.class
 br\ifsp\edu\heigostosospring\domain\dao\RecipeDAO.class

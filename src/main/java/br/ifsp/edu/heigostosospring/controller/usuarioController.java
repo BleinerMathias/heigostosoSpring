@@ -59,6 +59,4 @@ public class usuarioController {
         return "/menuUsuario.html";
     }
 
-
-
 }

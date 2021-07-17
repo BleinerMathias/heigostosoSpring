@@ -1,13 +1,11 @@
 package br.ifsp.edu.heigostosospring.controller;
 
+import br.ifsp.edu.heigostosospring.domain.recipe.Comment;
 import br.ifsp.edu.heigostosospring.domain.recipe.Ingredients;
 import br.ifsp.edu.heigostosospring.domain.recipe.Instructions;
 import br.ifsp.edu.heigostosospring.domain.recipe.Recipe;
 import br.ifsp.edu.heigostosospring.domain.user.User;
-import br.ifsp.edu.heigostosospring.service.IngredientService;
-import br.ifsp.edu.heigostosospring.service.InstructionsService;
-import br.ifsp.edu.heigostosospring.service.RecipeService;
-import br.ifsp.edu.heigostosospring.service.UserService;
+import br.ifsp.edu.heigostosospring.service.*;
 import org.aspectj.apache.bcel.generic.Instruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/receita")
@@ -35,6 +34,9 @@ public class RecipeController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CommentService commentService;
 
     private Recipe recipe;
 
@@ -85,9 +87,15 @@ public class RecipeController {
     }
 
     @GetMapping("/view/{id}")
-    public String viewRecipe(@PathVariable("id") Integer id, ModelMap map, HttpSession session){
+    public String viewRecipe(@PathVariable("id") Integer id, ModelMap map, HttpSession session, Comment comment){
         User user = (User) session.getAttribute("userLogged");
+        comment.setUser(user);
+        comment.setRecipe(service.buscarPorId(id));
+        comment.setDateTime(LocalDate.now());
+
         map.addAttribute("recipe",service.buscarPorId(id));
+        map.addAttribute("user",user);
+        map.addAttribute("commentsUsers",commentService.findByRecipe(service.buscarPorId(id).getId()));
         return "/visualizaReceita.html";
     }
 
