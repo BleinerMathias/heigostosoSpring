@@ -202,11 +202,14 @@
                 <div class="card card-comments">
                     <div>
                         <h3>Deixe seu comentário!</h3>
-                        <form class="was-validated">
+                        <form th:action="@{/comentarios/salvar}" th:object = "${comment}" method="POST" class="was-validated">
+                           <input type="hidden" id="id_recipe" th:field="*{recipe}">
+                           <input type="hidden" id="id_user" th:field="*{user}">
+                           <input type="hidden" id="dateTime" th:field="*{dateTime}">
                             <div class="form-group d-flex p-3">
                                 <label for="commentAboutThis">Escreva aqui</label>
                                 <textarea class="form-control is-valid" id="commentAboutThis"
-                                    placeholder="Deixe sua mensagem" required></textarea>
+                                    placeholder="Deixe sua mensagem" th:field="*{text}" required></textarea>
                                 <button class="btn btn-orange ml-2" type="submit">Enviar</button>
                             </div>
                         </form>
@@ -215,6 +218,7 @@
                 <!-- Comments All Users-->
                 <div class="card card-comments">
                     <section class="comments">
+                        <div th:each="{commentUser : ${recipe.commentsList}">
                         <article class="comment">
                             <a class="comment-img" href="#">
                                 <img src="https://github.com/bleinermathias.png" alt="" width="86" height="86">
@@ -223,34 +227,12 @@
                                 <div class="text">
                                     <p>Um comentário</p>
                                 </div>
-                                <p class="attribution">por <a href="#">Bleiner B. Mathias</a> - 21:19, 23/06/2021</p>
+                                <p class="attribution">por <a href="#">Usuario</a> <span th:text="{commentUser.dateTime}"></span></p>
                             </div>
 
                         </article>
-                        <article class="comment">
-                            <a class="comment-img" href="#">
-                                <img src="https://github.com/bleinermathias.png" alt="" width="86" height="86">
-                            </a>
-                            <div class="comment-body">
-                                <div class="text">
-                                    <p>Um comentário</p>
-                                </div>
-                                <p class="attribution">por <a href="#">Bleiner B. Mathias</a> - 21:19, 23/06/2021</p>
-                            </div>
+                        </div>
 
-                        </article>
-                        <article class="comment">
-                            <a class="comment-img" href="#">
-                                <img src="https://github.com/bleinermathias.png" alt="" width="86" height="86">
-                            </a>
-                            <div class="comment-body">
-                                <div class="text">
-                                    <p>Um comentário</p>
-                                </div>
-                                <p class="attribution">por <a href="#">Bleiner B. Mathias</a> - 21:19, 23/06/2021</p>
-                            </div>
-
-                        </article>
                     </section>
                 </div>
 

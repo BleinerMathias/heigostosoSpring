@@ -36,7 +36,7 @@ public class Recipe extends AbstractEntity<Integer> {
     private Category category;
 
     @OneToMany(mappedBy = "recipe")
-    private List<Comment> comments;
+    private List<Comment> commentsList;
 
     /*
     @OneToMany(mappedBy = "ratings")
@@ -92,6 +92,14 @@ public class Recipe extends AbstractEntity<Integer> {
     public void setInstructionsList(List<Instructions> instructionsList) {
         this.instructionsList = instructionsList;
     }
+
+    public List<Comment> getCommentsList() {
+        return commentsList;
+    }
+
+    public void setCommentsList(List<Comment> commentsList) {
+        this.commentsList = commentsList;
+    }
 /*
     public List<Rating> getRatingList() {
         return ratingList;
@@ -100,6 +108,7 @@ public class Recipe extends AbstractEntity<Integer> {
     public void setRatingList(List<Rating> ratingList) {
         this.ratingList = ratingList;
     }
+
 */
 
     public User getUser() {
@@ -119,11 +128,11 @@ public class Recipe extends AbstractEntity<Integer> {
     }
 
     public List<Comment> getComments() {
-        return comments;
+        return commentsList;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public void setComments(List<Comment> commentsList) {
+        this.commentsList = commentsList;
     }
 
 
